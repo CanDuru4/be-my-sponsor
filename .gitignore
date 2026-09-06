@@ -106,6 +106,30 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-**/SponsorApp/GoogleService-Info.plist
+### Secrets and credentials ###
+# Firebase / iOS configuration and signing material - never commit these
+GoogleService-Info.plist
+Keys.plist
+Secrets.plist
+*.pem
+*.p12
+*.cer
+*.certSigningRequest
+*.mobileprovision
+.env
+.env.*
+!.env.example
+
+### Machine and tooling files ###
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+Thumbs.db
+node_modules/
+__pycache__/
+.venv/
+dist/
+
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
 
