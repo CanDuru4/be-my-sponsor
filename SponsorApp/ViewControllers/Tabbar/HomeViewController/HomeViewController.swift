@@ -63,15 +63,17 @@ class HomeViewController: UIViewController {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
         view.addSubview(collectionView)
         
-        collectionView.register(FeedHeaderViewCell.self, forCellWithReuseIdentifier: FeedHeaderViewCell.identifier)
-        collectionView.register(FeedCaptionViewCell.self, forCellWithReuseIdentifier: FeedCaptionViewCell.identifier)
-        collectionView.register(FeedLikeViewCell.self, forCellWithReuseIdentifier: FeedLikeViewCell.identifier)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "feed")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         
+        let message = UILabel()
+        message.text = "Feed content is unavailable in this checkout."
+        message.textAlignment = .center
+        message.numberOfLines = 0
+        collectionView.backgroundView = message
         self.collectionView = collectionView
     }
     
@@ -101,7 +103,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -109,28 +111,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feed", for: indexPath)
-        
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedHeaderViewCell.identifier, for: indexPath)
-            return cell
-            
-        } else if indexPath.row == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCaptionViewCell.identifier, for: indexPath)
-            return cell
-            
-        } else if indexPath.row == 2 {
-            let image = UIImageView(image: UIImage(named: "Logo"))
-            image.contentMode = .scaleAspectFill
-            image.clipsToBounds = true
-            cell.backgroundView = image
-            return cell
-            
-        } else if indexPath.row == 3 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedLikeViewCell.identifier, for: indexPath)
-            return cell
-        }
-        
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "feed", for: indexPath)
     }
 }

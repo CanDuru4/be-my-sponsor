@@ -48,27 +48,25 @@ placeholder content.
 | --- | --- |
 | Language / UI | Swift 5.0, UIKit (programmatic layout) |
 | Minimum iOS | 16.0 |
-| Dependencies | CocoaPods 1.11.3 |
-| Auth & data | Firebase 9.3.0 — Auth, Firestore, Analytics |
+| Dependencies | Swift Package Manager |
+| Auth & data | Firebase 12.19.1: Auth, Firestore, Analytics |
 | Navigation | SideMenu 6.5.0 |
-| Networking | Alamofire 5.6.2 (declared in the `Podfile`, not yet used in code) |
 | Local storage | Core Data stack (model currently empty) and `UserDefaults` for the cached user id |
 
 ## Getting started
 
 ### Prerequisites
 
-- macOS with Xcode 14 or newer (iOS 16 SDK)
-- CocoaPods 1.11.3 or newer
+- macOS with Xcode 27 or newer
 - A Firebase project with **Email/Password Authentication** and **Cloud Firestore** enabled
 
 ### Install
 
 ```bash
 git clone https://github.com/CanDuru4/BeMySponsor.git
-cd BeMySponsor
-pod install
 ```
+
+Swift Package Manager resolves Firebase and SideMenu when the project is opened; CocoaPods is no longer used.
 
 ### Configuration
 
@@ -79,13 +77,18 @@ deliberately **not** committed to this repository:
 | --- | --- | --- |
 | `GoogleService-Info.plist` | `SponsorApp/`, added to the `SponsorApp` target | Firebase console → Project settings → Your apps → iOS app for bundle id `com.CanDuru.SponsorApp` |
 
-That file is git-ignored — never commit it. No other environment variables, API keys or secrets are
+That file is git-ignored; never commit it. Without it the app shows a setup screen instead of calling Firebase. No other environment variables, API keys or secrets are
 required to build or run the app.
 
 ### Run
 
-Open **`SponsorApp.xcworkspace`** (not `SponsorApp.xcodeproj` — the project uses CocoaPods), pick the
-`SponsorApp` scheme and an iOS 16+ simulator or device, then Run (⌘R).
+Open **`SponsorApp.xcodeproj`** in Xcode 27 or later, pick the `SponsorApp` scheme and an iOS 16+
+simulator or device, then Run (⌘R).
+
+### Known gap
+
+The three authored feed-cell files were already deleted before the September 2026 modernization. The home
+feed displays an unavailable message until they are restored; menu and navigation code remains intact.
 
 ## Project structure
 
@@ -103,8 +106,7 @@ SponsorApp/
 ├── Assets.xcassets/                Logo, language flags, app icon
 ├── Base.lproj/                     LaunchScreen.storyboard
 └── SponsorApp.xcdatamodeld/        Core Data model
-Podfile / Podfile.lock              CocoaPods dependency manifest and lock
-SponsorApp.xcworkspace/             Workspace to open (project + Pods)
+SponsorApp.xcodeproj/               Project to open (Swift Package Manager dependencies)
 ```
 
 ## Build and release
@@ -128,6 +130,6 @@ Can Duru — canduru2004@gmail.com, support@canduru.net — [https://canduru.net
 [swift-url]: https://swift.org/
 [platform-image]: https://img.shields.io/badge/platform-iOS%2016.0%2B-lightgrey.svg
 [platform-url]: https://developer.apple.com/ios/
-[firebase-image]: https://img.shields.io/badge/Firebase-9.3.0-ffca28.svg
+[firebase-image]: https://img.shields.io/badge/Firebase-12.19.1-ffca28.svg
 [firebase-url]: https://firebase.google.com/docs/ios/setup
 [license-image]: https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey.svg
