@@ -8,7 +8,7 @@
 
 BeMySponsor is a native iOS sponsorship-matching app: an account registers either as an organization looking for sponsors or as a company looking to sponsor, each side keeps a profile with its category, budget, contact details, past events and partners, and both browse a shared feed. It is written in Swift and UIKit and backed by Firebase Authentication and Cloud Firestore. The app is at the development stage: sign-up, log-in, password reset and Firestore profile creation work, while the feed, search and profile screens are scaffolded and still render placeholder content. The Xcode project is named `SponsorApp`.
 
-> **Context:** Built for Ovvl Company. Published for reference, not as a general-purpose open-source project; see [License](#license) before reusing anything.
+> **Context:** Built for Ovvl Company, the author's own startup. Published for reference, not as a general-purpose open-source project; see [License](#license) before reusing anything.
 
 ## Features
 
@@ -45,7 +45,7 @@ BeMySponsor is a native iOS sponsorship-matching app: an account registers eithe
 1. Clone the repository.
 
    ```bash
-   git clone https://github.com/CanDuru4/BeMySponsor.git
+   git clone https://github.com/CanDuru4/be-my-sponsor.git
    ```
 
 2. Open `SponsorApp.xcodeproj` in Xcode. Swift Package Manager resolves Firebase and SideMenu automatically.
@@ -96,7 +96,7 @@ No screenshots are committed yet.
 
 ## License
 
-No license file is provided. The code is public for reference only: all rights are reserved by the author and Ovvl Company, and no permission to use, copy, modify or redistribute it is granted.
+No license file is provided. The code is public for reference only: all rights are reserved by Can Duru (Ovvl Company), and no permission to use, copy, modify or redistribute it is granted.
 
 ## Author
 
