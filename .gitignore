@@ -109,3 +109,11 @@ iOSInjectionProject/
 **/SponsorApp/GoogleService-Info.plist
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
 
+
+# Local secrets and machine state (never commit)
+**/GoogleService-Info.plist
+xcuserdata/
+.DS_Store
+DerivedData/
+.build/
+*.xcresult
