@@ -1,6 +1,6 @@
 # Changelog
 
-SponsorApp for Ovvl Company Startup;
+SponsorApp for Ovvl Company Startup
 
 ## [0.0.0] (1) (2023-07-11)
-- Ver. 0.0.0 build is initalized for development. 
+- Ver. 0.0.0 build is initialized for development.
