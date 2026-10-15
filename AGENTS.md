@@ -11,7 +11,7 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 - `SponsorApp/ViewControllers/MenuViewController/` — SideMenu list and language-flag cell.
 - `SponsorApp/Helpers/Color Codes/ColorCodes.swift` — central light/dark palette (`LightMode.jpeg`/`DarkMode.jpeg` are the design references).
 - `SponsorApp/Assets.xcassets` — logo, app icon, language flag images.
-- `CHANGELOG.md` — version history (only 0.0.0 so far). `docs/assets/` — README banner.
+- `CHANGELOG.md`: version history (only 0.0.0 so far). `design-assets/banner/`: Canduru README banner.
 
 ## Commands
 
