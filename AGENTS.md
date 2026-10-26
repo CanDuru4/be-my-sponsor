@@ -48,3 +48,10 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 ## Docs
 
 - `README.md` — features, setup, Firebase configuration table, project structure, license.
+
+## Validation placement and reuse (owner update 2026-10-26)
+
+- Follow the global Claude/Codex test policy and `~/Developer/personal/mac-mini/validation-economy/README.md` and `COVERAGE.md`. Focus first; full coverage only when the changed inputs require it. Docs-only policy edits need no application suite or deploy.
+- Manual heavy commands use `repo-run.py --repo <absolute checkout> --profile <profile> -- <command>` from the shared helper; choose from native for the actual tool. Tiny syntax checks need no reservation. Bound tool workers and reserve separate heavy phases.
+- Keep Xcode, Swift, simulator, signing and device checks on the Mini. Brain's current Python/Node Linux images do not supply this Apple toolchain; its approval does not replace native proof.
+- Reuse only supported receipts with matching source, coverage, dependencies, runtime/platform and relevant environment. Preserve passed unaffected batches; count remote results only when the owning gate aggregates them. Receipts do not replace required build artifacts or OS/device/browser proof. Split or offload an impossible reservation instead of waiting indefinitely; only stop your own obsolete jobs.
