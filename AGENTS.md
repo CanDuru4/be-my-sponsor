@@ -4,13 +4,13 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 
 ## Repo map
 
-- `SponsorApp.xcodeproj` — the only project to open. Target and auto-generated scheme are both `SponsorApp`; no shared scheme is committed. Package pins live in `SponsorApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved` (Firebase 12.19.1, SideMenu 6.5.0).
-- `SponsorApp/Setup/` — `AppDelegate` (Firebase configure + empty Core Data stack), `SceneDelegate` (root `UINavigationController` → `TabBarViewController`), `TabbarViewController.swift`.
-- `SponsorApp/ViewControllers/RegisterViewController/` — log-in, sign-up (Firebase Auth + Firestore profile write).
-- `SponsorApp/ViewControllers/Tabbar/{Home,Search,Profile}ViewController/` — tab screens; `AuthViewController` gates Profile for signed-out users.
-- `SponsorApp/ViewControllers/MenuViewController/` — SideMenu list and language-flag cell.
-- `SponsorApp/Helpers/Color Codes/ColorCodes.swift` — central light/dark palette (`LightMode.jpeg`/`DarkMode.jpeg` are the design references).
-- `SponsorApp/Assets.xcassets` — logo, app icon, language flag images.
+- `SponsorApp.xcodeproj`: the only project to open. Target and auto-generated scheme are both `SponsorApp`; no shared scheme is committed. Package pins live in `SponsorApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved` (Firebase 12.19.1, SideMenu 6.5.0).
+- `SponsorApp/Setup/`: `AppDelegate` (Firebase configure + empty Core Data stack), `SceneDelegate` (root `UINavigationController` → `TabBarViewController`), `TabbarViewController.swift`.
+- `SponsorApp/ViewControllers/RegisterViewController/`: log-in, sign-up (Firebase Auth + Firestore profile write).
+- `SponsorApp/ViewControllers/Tabbar/{Home,Search,Profile}ViewController/`: tab screens; `AuthViewController` gates Profile for signed-out users.
+- `SponsorApp/ViewControllers/MenuViewController/`: SideMenu list and language-flag cell.
+- `SponsorApp/Helpers/Color Codes/ColorCodes.swift`: central light/dark palette (`LightMode.jpeg`/`DarkMode.jpeg` are the design references).
+- `SponsorApp/Assets.xcassets`: logo, app icon, language flag images.
 - `CHANGELOG.md`: version history (only 0.0.0 so far). `design-assets/banner/`: Canduru README banner.
 
 ## Commands
@@ -19,6 +19,7 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 - CLI build (no signing): `xcodebuild -project SponsorApp.xcodeproj -scheme SponsorApp -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build`
 - List targets/schemes: `xcodebuild -list -project SponsorApp.xcodeproj`
 - Tests: there is no test target.
+- If `xcodebuild` fails with "already exists in file system", another session is resolving the same Firebase binaries: wait and retry once; never clear `~/Library/Caches/org.swift.swiftpm`.
 - Deploy: none. No CI, no fastlane, no release workflow; builds are made locally in Xcode.
 
 ## Configuration and secrets
@@ -47,13 +48,8 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 
 ## Docs
 
-- `README.md` — features, setup, Firebase configuration table, project structure, license.
+- `README.md`: features, setup, Firebase configuration table, project structure, license.
 
-## Validation placement and reuse (owner update 2026-10-26)
+## Validation
 
-- Follow the global Claude/Codex test policy and `~/Developer/personal/mac-mini/validation-economy/README.md` and `COVERAGE.md`. Focus first; full coverage only when the changed inputs require it. Docs-only policy edits need no application suite or deploy.
-- Use `~/Developer/personal/mac-mini/validation-economy/remote-run.py` for every check that can run on Linux (owner rule 2026-10-27: "all the things that we can run on pc must be on pc"): tests, lint, typecheck, Node and web checks. The Mini keeps only what needs macOS or a device, each such chunk with its reason written in the gate map; this repo wires the route in its own gate, and Linux-capable work left on the Mini is a bug to fix here. It defaults to `gaming-pc` and handles connection and bounded Wake-on-LAN automatically; call it directly without a separate online check or asking the owner each time. Match the pinned runtime and locked dependencies, bound actual workers, and preserve repo data-export restrictions. Never export credentials, production data, signing keys or uncommitted work.
-- The PC pool shares eight CPU slots and 24 GiB across isolated jobs with zero test swap; retain automatic job cleanup, the 8 GiB package-cache budget and 128 GiB virtual-disk cap. Brain is an explicit secondary route (`--runner brain`) when compatible, capped at two CPUs and 4 GiB together. If the PC remains unavailable after bounded wake/connect, report the blocker; never silently start the same work on the Mini or replay an uncertain submitted job.
-- Xcode, Swift, simulator, signing and device checks stay on the Mini. The PC Linux runner has no Apple toolchain; only compatible ancillary Python/Node checks are eligible.
-- For work that must run on the Mini: manual heavy commands use `repo-run.py --repo <absolute checkout> --profile <profile> -- <command>` from the shared helper; choose from native for the actual tool. Tiny syntax checks need no reservation. Bound tool workers and reserve separate heavy phases.
-- Reuse only supported receipts with matching source, coverage, dependencies, runtime/platform and relevant environment. Preserve passed unaffected batches; count remote results only when the owning gate aggregates them. Receipts do not replace required build artifacts or OS/device/browser proof. Split or offload an impossible reservation instead of waiting indefinitely; only stop your own obsolete jobs. Existing gates need explicit remote routing and matching-result aggregation; this instruction does not automatically move unintegrated commands.
+Mac-only: builds need Xcode, so they run on the Mini (global "Tests, CI and deploy"). No test target. No simulator is needed.
