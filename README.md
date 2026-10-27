@@ -100,4 +100,4 @@ No license file is provided. The code is public for reference only: all rights a
 
 ## Author
 
-Can Duru — [canduru.net](https://canduru.net)
+Can Duru, [canduru.net](https://canduru.net)
