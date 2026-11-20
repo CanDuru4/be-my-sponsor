@@ -40,15 +40,11 @@ Native iOS sponsorship-matching app for Ovvl Company, the owner's own startup (n
 
 ## Gotchas
 
-- The feed cell classes (header/caption/image/like) were deleted before the Sept 2026 modernization. `HomeViewController` registers a plain `UICollectionViewCell` and shows "Feed content is unavailable in this checkout." The README's feature list and project-structure line still mention those cells; its Known limitations section is the accurate one.
+- The feed cell classes (header/caption/image/like) are not in the repo. `HomeViewController` registers a plain `UICollectionViewCell` and shows "Feed content is unavailable in this checkout." The README's feature list and project-structure line still mention those cells; its Known limitations section is the accurate one.
 - Core Data model `SponsorApp.xcdatamodeld` is empty; `persistentContainer` `fatalError`s on load failure (template code).
 - GitHub repo is `CanDuru4/be-my-sponsor` (renamed from `BeMySponsor`).
 - No `Localizable` strings or string catalog is committed, so `String(localized:)` keys (`dataError`, `okButton`) render as the raw key. `SponsorApp/Translation/` is an empty, untracked local folder.
 - The README follows the owner's portfolio README standard (fixed skeleton ending with License and Author); keep that structure when editing it.
-
-## Docs
-
-- `README.md`: features, setup, Firebase configuration table, project structure, license.
 
 ## Validation
 
